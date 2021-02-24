@@ -13,8 +13,8 @@ void setup()
   Serial.begin(115200);
 
   Serial3.begin(9600);
-  Serial3.println("AT+NAMEWT1");
-
+  Serial3.println("AT+NAMEWT1\n\r");
+  Serial3.flush();
   Serial.println("WT1 INIT");
   motors.init();
 
