@@ -8,12 +8,17 @@ Motors motors;
 void setup()
 {
   //TCCR3B = bit (WGM32) | bit (WGM32) | bit (CS30);
+
   TCCR3B = bit(WGM32) | bit(CS32) | bit(CS30);
   Serial.begin(115200);
-  Serial.println("TANK V0.1");
+
+  Serial3.begin(9600);
+  Serial3.println("AT+NAMEWT1");
+
+  Serial.println("WT1 INIT");
   motors.init();
 
-  //Set the output to the desired starting frequency.
+  Serial3.println("WT1 INIT");
 }
 
 long lastprint = millis();
