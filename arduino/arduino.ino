@@ -11,14 +11,20 @@ void setup()
 
   TCCR3B = bit(WGM32) | bit(CS32) | bit(CS30);
   Serial.begin(115200);
-
+  Serial.println("WT1 INIT");
+  Serial.print("BTSERIAL:");
   Serial3.begin(9600);
+  delay(500);
   Serial3.println("AT+NAMEWT1\n\r");
   Serial3.flush();
-  Serial.println("WT1 INIT");
-  motors.init();
+  delay(500);
+  Serial.println("OK");
 
-  Serial3.println("WT1 INIT");
+  Serial.print("MOTOS:");
+  motors.init();
+  Serial.println("OK");
+
+  Serial3.println("WT1 INIT DONE");
 }
 
 long lastprint = millis();
