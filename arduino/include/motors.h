@@ -83,6 +83,9 @@ public:
     void loop();
     double getSpeedOutput();
     double getSpeedInput();
+    double getSpeedDesired();
+
+    boolean isPidOn();
     void setSpeedRPMDesired(double speed);
     bool getCurrDirection();
     void pidOn(boolean b);
@@ -112,7 +115,9 @@ public:
     void setPIDParams(double kp, double ki, double kd);
     void pidOn(boolean b);
     void setSpeedRPMDesired(double, double);
-    
+
+    boolean isMoving();
+
 private:
     Motors();
 

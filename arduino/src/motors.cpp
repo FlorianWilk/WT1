@@ -79,6 +79,14 @@ double Motor::getSpeedInput()
     return speedRPMInput;
 }
 
+double Motor::getSpeedDesired(){
+    return speedRPMDesired;
+}
+
+boolean Motor::isPidOn(){
+    return PIDC->GetMode()==AUTOMATIC;
+}
+
 void Motor::setSpeedRPMDesired(double speed)
 {
     speedRPMDesired = speed;
@@ -123,6 +131,10 @@ void Motors::setPIDParams(double kp, double ki, double kd)
 {
     motorLeft->setPIDParams(kp, ki, kd);
     motorRight->setPIDParams(kp, ki, kd);
+}
+
+boolean Motors::isMoving(){
+    return (motorLeft->getSpeedDesired()!=0.0||motorRight->getSpeedDesired())&&(motorLeft->isPidOn()||motorRight->isPidOn());
 }
 
 void Motors::loop()
